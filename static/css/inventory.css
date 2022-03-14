@@ -32,3 +32,167 @@
     border-width: 3px;
     box-shadow: 5px 5px 5px rgba(39, 50, 72, 0.3);
 }
+
+.tables-container {
+    color: rgb(255, 235, 210);
+    margin: 10px;
+}
+
+.inventoryheader {
+    height: 100px;
+    text-align: center;
+    margin: auto;
+    border-bottom-style: ridge;
+    border-color: rgba(39, 50, 72, 0.5);
+    border-width: 3px;
+}
+
+.inventoryname {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: xx-large;
+}
+
+.collection-value-box {
+    width: 50%;
+    height: 80px;
+    text-align: center;
+    vertical-align: middle;
+    margin: auto;
+    padding: 10px;
+    border-bottom-style: ridge;
+    border-color: rgba(39, 50, 72, 0.5);
+    border-width: 3px;
+}
+
+.collection-value {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    vertical-align: middle;
+    font-size: x-large;
+}
+
+.card-add-form {
+    outline: 1px dotted white;
+}
+
+form {
+    width: 800px;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: rgb(255, 235, 210, 0.3);
+    border-radius: 15px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    margin-top: 80px;
+    margin-bottom: 80px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: large;
+}
+
+label, input, button{
+    display: block;
+    margin-left: 5px;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+input {
+    background-color: rgb(255, 235, 210);
+}
+
+.add-card-btn {
+    background-color: rgb(175, 79, 65);
+    color: rgb(255, 235, 210);
+    border-radius: 5px;
+}
+
+
+table {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 420px;
+    border: 1px solid rgb(39, 50, 72);
+    z-index: 99;
+    background-color: rgb(175, 79, 65);
+}
+
+th {
+    height: 50px;
+}
+
+.td-delete-card-btn {
+    width: 40px;
+}
+.td-card-name {
+    width: 300px;
+}
+
+.td-finish {
+    width: 70px;
+}
+
+.td-set-name {
+    width: 300px;
+}
+
+.td-quantity {
+    width: 70px;
+}
+
+.td-individual-value {
+    width: 80px;
+}
+
+.td-total-value {
+    width: 60px;
+}
+
+.card-row {
+    height: 40px;
+    padding-left: 5px;
+}
+
+tr:nth-child(odd) {
+    background-color: rgba(39, 50, 72, 0.3);
+}
+
+tr:nth-child(even) {
+    background-color: rgb(255, 235, 210, 0.3);
+}
+
+.delete-card-btn {
+    border-radius: 15px;
+    background-color: rgb(175, 79, 65);
+    color: rgb(255, 235, 210)
+}
+
+td {
+    padding-left: 5px;
+}
+
+#result-card {
+    position: relative;
+    display: inline-block;
+    width: 169px;
+    outline: 1px dotted white;
+    z-index: 1;
+}
+
+.result-card li{
+    background-color: rgb(39, 50, 72);
+    list-style: none;
+    z-index: 1;
+    width: 169px;
+    outline: 1px dotted white;
+}
