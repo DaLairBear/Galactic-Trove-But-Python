@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/store_base.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kameron:wght@700&display=swap" rel="stylesheet">
+    <title>Galactic Trove</title>
+</head>
+<body>
+    <header>
+        <div id="header">
+            <div id="logo-container">
+                <div id="logobackground">
+                    <img src="/static/Logo-Final.png" alt="Galactic Trove Logo" id="logo">
+                </div>
+                <div id="site-name">Galactic Trove</div>
+                <div id="site-tagline">Trading Card Games, Collectables, Sports Cards & More</div>
+            </div>
+            <nav id="main-nav">
+                <ul>
+                    <li>
+                        <a href="/store/{{ session['store_id'] }}"><img src="/static/Icons/Home.png" alt="Home Icon" id="home-icon">Home</a>
+                    </li>
+                    <li>
+                        <a href="/inventory/{{ session['store_id'] }}"><img src="/static/Icons/Inventory.png" alt="Inventory Icon" id="inventory-icon">Inventory</a>
+                    </li>
+                    <li>
+                        <a href="/storelogout"><img src="/static/Icons/Login-Logout.png" alt="Logout Icon" id="logout-icon">Logout</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main id="inventory-contents">
+        {% block content %} {% endblock %}
+    </main>
+</body>
+</html>

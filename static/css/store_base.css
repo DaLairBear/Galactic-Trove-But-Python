@@ -1,0 +1,172 @@
+html { 
+    background: url(/static/timur-kozmenko-yEFtNvBB0QM-unsplash.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+body {
+    padding: 0%;
+}
+
+header {
+    width:100%;
+    height: 100px;
+    background-color: rgba(252, 118, 67, 0.85);
+    margin: 0 auto;
+    position: sticky;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    position: fixed;
+}
+
+
+#header{
+    width: 100%;
+    height: 100px;
+}
+
+#logo-container{
+    display: inline-block;
+    height: 88px;
+    width: 565px;
+    position: sticky;
+    top: 5px;
+    left: 38px;
+    position: fixed;
+}
+
+#logobackground{
+    display: inline-block;
+    height: 68px;
+    width: 65px;
+    background-color: rgba(255, 235, 210, 1);
+    border-radius: 50px;
+    position: sticky;
+    top: 12px;
+    left: 44px;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    border: 2px solid rgba(39, 50, 72, 1);
+}
+
+#logo{
+    max-height: 160%;
+    max-width: 160%;
+    border-radius: 50px;
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-45%, -50%);
+}
+
+#site-name{
+    display: inline-block;
+    width: fit-content;
+    height: fit-content;
+    position: sticky;
+    top: 12px;
+    left: 140px;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    color: rgb(255, 235, 210);
+    font-family: 'Kameron', serif;
+    font-size: 60px;
+    -webkit-text-stroke: 2px rgba(39, 50, 72, 1);
+}
+
+#site-tagline{
+    display: inline-block;
+    width: fit-content;
+    height: fit-content;
+    position: sticky;
+    top: 68px;
+    left: 116px;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    color: rgb(255, 235, 210);
+    font-family: 'Kameron', serif;
+    font-size: 18px;
+}
+
+#main-nav ul {
+    list-style-type: none;
+    list-style-position: inside;
+    width: 100%;
+    height: 100px;
+    margin: 0;
+    padding: 0;
+    position: sticky;
+    top: 0px;
+    left: 55%;
+    right: 0px;
+    position: fixed;
+
+}
+
+#main-nav li {
+    display: inline-block;
+    height: 50px;
+    width: 170px;
+    top: 25px;
+	position: relative;
+    background-color: rgb(175, 79, 65);
+    border-radius: 15px;
+    text-align: center;
+    margin-right: 15px;
+    margin-left: 20px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+#main-nav a {
+    text-decoration: none;
+    color: rgb(255, 235, 210);
+    font-size: 20px;
+    display: block;
+    padding-top: 13px;
+    padding-left: 30px;
+}
+
+#main-nav li #home-icon {
+    max-height: 60%;
+    max-width: 60%;
+    border-radius: 50px;
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-75%, -50%);
+}
+
+#main-nav li #inventory-icon {
+    max-height: 60%;
+    max-width: 60%;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-75%, -50%);
+}
+
+#main-nav li #logout-icon {
+    max-height: 60%;
+    max-width: 60%;
+    border-radius: 50px;
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-75%, -50%);
+}
+
+main {
+    display: block;
+    height: 100%;
+    width: 1060px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 130px;
+}

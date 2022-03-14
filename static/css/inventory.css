@@ -1,0 +1,37 @@
+#large-inventory {
+    position: relative;
+    width: 1054px;
+    height: 1000px;
+    background-color: rgb(255, 235, 210);
+    border-style: ridge;
+    border-color: rgba(39, 50, 72, 0.1);
+    border-width: 3px;
+}
+
+#medium-inventory {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1034px;
+    height: 1000px;
+    background-color: rgb(252, 118, 67);
+    border-style: inset;
+    border-color: rgb(255, 235, 210, 0.3);
+    border-width: 3px;
+}
+
+#inventory {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1014px;
+    height: 1000px;
+    background-color: rgb(175, 79, 65);
+    border-style: ridge;
+    border-color: rgb(252, 118, 67, 0.3);
+    border-width: 3px;
+    box-shadow: 5px 5px 5px rgba(39, 50, 72, 0.3);
+}
+

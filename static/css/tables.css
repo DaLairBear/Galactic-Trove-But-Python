@@ -1,0 +1,200 @@
+.divTable{
+	display: table;
+	width: 100%;
+}
+.divTableRow {
+	display: table-row;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+}
+.divTableCell, .divTableHead {
+	border: 1px solid #999999;
+	display: table-cell;
+	padding: 3px 10px;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+	font-weight: bold;
+}
+.divTableFoot {
+	background-color: #EEE;
+	display: table-footer-group;
+	font-weight: bold;
+}
+.divTableBody {
+	display: table-row-group;
+}
+
+
+
+
+
+
+
+/* color pallet: 
+rgb(255, 235, 210)
+rgb(255, 163, 100) 
+rgb(252, 118, 67)
+rgb(175, 79, 65)
+rgb(39, 50, 72) */
+/* body {
+    background-color: rgb(39, 50, 72);
+    font-family: Kameron;
+    text-align: center;
+}
+
+#header {
+    width: 50%;
+    left: 25%;
+    right: 25%;
+    height: 50px;
+    border-radius: 5px;
+    position: absolute;
+    margin: 0 auto;
+    vertical-align: baseline;
+    background-color: rgb(252, 118, 67);
+    padding-top: 15px;
+}
+
+#main-nav ul {
+    list-style-type: none;
+    list-style-position: inside;
+    margin: 0 auto; 
+}
+
+#main-nav li {
+    height: 30px;
+    float: left;
+    padding: 0 12px;
+	font-size: 15px;
+	line-height: 2;
+	position: relative;
+}
+
+#main-nav a {
+    text-decoration: none;
+    color: rgb(255, 235, 210);
+    background-color: rgb(175, 79, 65);
+    display: inline-block;
+    border-radius: 5px;
+    padding: 3px 10px 3px 10px;
+}
+
+#account-nav ul{
+    list-style-type: none;
+    list-style-position: inside;
+    margin: 0 auto;
+    vertical-align: baseline;
+}
+
+#account-nav li {
+    height: 30px;
+    float: right;
+    padding: 0 12px;
+	font-size: 15px;
+	line-height: 2;
+	position: relative;
+}
+
+#account-nav a {
+    background-color: rgb(175, 79, 65);
+    text-decoration: none;
+    color: rgb(255, 235, 210);
+    display: inline-block;
+    border-radius: 5px;
+    padding: 3px 10px 3px 10px;
+}
+
+#login {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 200px;
+    position: relative;
+    display: inline-block;
+    background-color: rgb(252, 118, 67, 0.8);
+    padding: 3px 10px 3px 10px;
+    border-radius: 5px;
+}
+
+#register {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 200px;
+    position: relative;
+    display: inline-block;
+    background-color: rgb(252, 118, 67, 0.8);
+    padding: 3px 10px 3px 10px;
+    border-radius: 5px;
+}
+
+.collection-table{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 200px;
+    position: relative;
+    display: inline-block;
+    padding: 3px 10px 3px 10px;
+    border-radius: 5px;
+    color: rgb(255, 235, 210);
+    font-size: 15px;
+}
+
+.collection-table-header {
+    background-color: rgb(252, 118, 67, 0.8);
+}
+
+.collection-table-input-row {
+    background-color: rgb(252, 118, 67, 0.5);
+}
+
+#collection-inputs {
+    background-color: rgb(175, 79, 65, 0.5);
+}
+
+#result-card ul {
+    background-color: rgb(252, 118, 67, 0.5);
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    z-index: 99;
+    position: absolute;
+  }
+  #result-card ul li {
+    padding: 5px 0;
+  }
+  #result-card ul li:hover {
+    background: rgb(255, 163, 100, 0.5);
+  }
+
+  #result-set ul {
+    background-color: rgb(252, 118, 67, 0.5);
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    z-index: 99;
+    position: absolute;
+  }
+  #result-set ul li {
+    padding: 5px 0;
+  }
+  #result-set ul li:hover {
+    background: rgb(255, 163, 100, 0.5);
+  }
+
+  #content{
+    background-color: rgb(175, 79, 65, 0.5);
+	text-decoration: none;
+    color: rgb(255, 235, 210);
+    display: inline-block;
+    margin-top: 100px;
+    width: 50%;
+}
+
+img {
+    position: absolute;
+    z-index: 10;
+    
+} */

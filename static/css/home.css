@@ -1,0 +1,58 @@
+#large-welcome {
+    position: relative;
+    width: 1054px;
+    height: 354px;
+    background-color: rgb(255, 235, 210);
+    border-style: ridge;
+    border-color: rgba(39, 50, 72, 0.1);
+    border-width: 3px;
+}
+
+#medium-welcome {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1034px;
+    height: 334px;
+    background-color: rgb(252, 118, 67);
+    border-style: inset;
+    border-color: rgb(255, 235, 210, 0.3);
+    border-width: 3px;
+}
+
+#welcome {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1014px;
+    height: 314px;
+    background-color: rgb(175, 79, 65);
+    border-style: ridge;
+    border-color: rgb(252, 118, 67, 0.3);
+    border-width: 3px;
+    box-shadow: 5px 5px 5px rgba(39, 50, 72, 0.3);
+}
+
+#welcome h1 {
+    width: 950px;
+    height: 70px;
+    text-align: center;
+    vertical-align: middle;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgb(255, 235, 210);
+    border-bottom-style: ridge;
+    border-color: rgba(39, 50, 72, 0.5);
+    border-width: 3px;
+    font-size: xx-large;
+}
+
+#welcome p{
+    text-align: justify;
+    vertical-align: middle;
+    width: 900px;
+    margin: auto;
+    color: rgb(255, 235, 210);
+}

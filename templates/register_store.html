@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<link rel="stylesheet" href="/static/css/selected_join.css">
+<div id="large-join">
+    <div id="medium-join">
+        <article id="join">
+            <h1>Join as a Store</h1>
+            <div id="box">    
+                <form method="POST" id="join-form">
+                    <div id="input-container">
+                        <input type="text" name="First Name" required="" class="form-control">
+                        <label>First Name</label>
+                    </div>
+                    <div id="input-container">
+                        <input type="text" name="Last Name" required="" class="form-control">
+                        <label>Last name</label>
+                    </div>
+                    <div id="input-container">
+                        <input type="text" name="Username" required="" class="form-control">
+                        <label>Store Name</label>
+                    </div>
+                    <div id="input-container">
+                        <input type="email" name="Email" required="" class="form-control">
+                        <label>Email</label>
+                    </div>
+                    <div id="input-container">
+                        <input type="password" name="Password" required="" class="form-control">
+                        <label>Password</label>
+                    </div>
+                    <div id="register-btn">
+                        <input type="submit" value="Join" class="register-btn">
+                    </div>
+                </form>
+            </div>
+        </article>
+    </div>
+</div>
+{% endblock %}
