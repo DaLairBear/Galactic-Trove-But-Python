@@ -1,170 +1,167 @@
 {% extends 'collector_base.html' %}
 {% block content %}
-<link rel="stylesheet" href="/static/css/tables.css">
+<link rel="stylesheet" href="/static/css/collection.css">
 {% for x in collections_in_db %}
-    <div class="tables-container">
-        <div class="tableheader-container">
-            <div class="tableheader">
-                <div class="tr-inventoryheader">
-                    <div class="td-inventoryname" contenteditable="true" id="collection_name" onblur="collection_name_change()"> {{ x.collection_name }}</div>
-                </div>
-                <div class="divTableRow">
-                    <div class="divTableCell">&nbsp;</div>
-                    <div class="divTableCell" id="collection-value"></div>
-                </div>
-                <div class="divTableRow">
-                    <div class="divTableCell">Card Name</div>
-                    <div class="divTableCell">Set Name</div>
-                    <div class="divTableCell">Finish</div>
-                    <div class="divTableCell">Quantity</div>
-                    <div class="divTableCell">Individual Value</div>
-                    <div class="divTableCell">Total Value</div>
-                </div>
-            </div>
-        </div>
-        <div class="divTable">
-            <div class="divTableBody">
-                <div class="divTableRow">&nbsp;</div>
-                <div class="divTableRow">&nbsp;</div>
-                <div class="divTableRow">
-                    <form action="">
-                        <div class="divTableCell">
-                            <button type="button" class="add-card-btn">Add</button>
-                        </div>
-                        <div class="divTableCell">
-                            <input type="search" class="card-name-search" id="card-name-search" placeholder="Card Name">
-                            <div id="result-card"></div>
-                        </div>
-                        <div class="divTableCell">
-                            <input type="search" class="set-name-search" id="set-name-search" placeholder="Set Name">
-                            <div id="result-set"></div>
-                        </div>
-                        <div class="divTableCell">
-                            <select class="finish-select" id="finish-select" aria-placeholder="Finish">
-                                <div id="result-finishes"></div>
-                            </select>
-                        </div>
-                        <div class="divTableCell">Quantity
-                            <input type="number" class="card-quantity" id="card-quantity" placeholder="0">
-                        </div>
-                        <div class="divTableCell">Individual Value</div>
-                        <div class="divTableCell">Total Value</div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        {% if card_collection %}
-            {% set this_collection = card_collection[loop.index0] %}
-            {% for card in this_collection %}
-
-            <div class="divTableRow">
-                
-                    <div class="divTableCell">
-                        <button type="button" class="delete-card-btn" id="{{ card['card_id'] }}" onclick="deletecardfromcollection(this.id)">X</button>
+<div id="large-collection">
+    <div id="medium-collection">
+        <article id="collection">
+            <div class="tables-container">
+                <div class="tableheader-container">
+                    <div class="collectionheader">
+                        <div class="collectionname" contenteditable="true" id="collection_name" onblur="collection_name_change()"> {{ x.collection_name }}</div>
                     </div>
-                    <div class="divTableCell">{{ card['card_name'] }}</div>
-                    <div class="divTableCell">{{ card['set_name'] }}</div>
-                    <div class="divTableCell">{{ card['finish'] }}</div>
-                    <div class="divTableCell">{{ card['quantity']}}</div>
-                    {% if card['finish'] == 'nonfoil'%}
-                        <div class="divTableCell">${{ card['nonfoil_price']|float }}</div>
-                    {% elif card['finish'] == 'foil'%}
-                        <div class="divTableCell">${{ card['foil_price']|float }}</div>
-                    {% elif card['finish'] == 'etched'%}
-                        <div class="divTableCell">${{ card['etched_price']|float }}</div>
-                    {% endif %}
-                    {% if card['finish'] == 'nonfoil'%}
-                        <div class="divTableCell" id="total_price" data-value="{{ (card['quantity'] * card['nonfoil_price']|float)|float }}">${{ (card['quantity'] * card['nonfoil_price']|float)|float }}</div>
-                    {% elif card['finish'] == 'foil'%}
-                        <div class="divTableCell" id="total_price" data-value="{{ (card['quantity'] * card['foil_price']|float)|float }}">${{ (card['quantity'] * card['foil_price']|float)|float }}</div>
-                    {% elif card['finish'] == 'etched'%}
-                        <div class="divTableCell" id="total_price" data-value="{{ (card['quantity'] * card['etched_price']|float)|float }}">${{ (card['quantity'] * card['etched_price']|float)|float }}</div>
-                    {% endif %}
-                    
-                
-            </div>
-
-            {% endfor %}
-        {% endif %}
-
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-        <script>
-            function collection_name_change(){
-                let name = document.getElementById("collection_name")
-                let collection_id = '{{ x.collection_id }}'
-                let collectionname = name.textContent
-                let dict_values = {collection_id, collectionname}
-                let s = JSON.stringify(dict_values)
-                
-                $.ajax({
-                    url:"/updatecollectionname",
-                    type:"POST",
-                    contentType: "application/json",
-                    data: JSON.stringify(s)
-                })
-            }
+                    <div class="collection-value-box">
+                        <div class="collection-value" id="collection-value"></div>
+                    </div>
+                    <div class="card-add-form">
+                        <form autocomplete="off">
+                            <div class="addcard-text">
+                                <label for="add-card-btn">Add to collection</label>
+                                <button type="button" class="add-card-btn">Add</button>
+                            </div>
+                            <div class="addcard-text">
+                                <label for="card-name-search">Card Name</label>
+                                <input type="search" class="card-name-search" id="card-name-search" placeholder="Search Card First">
+                                <div id="result-card"></div>
+                            </div>
+                            <div class="addcard-text">
+                                <label for="set-name-search">Set Name</label>
+                                <input type="search" class="set-name-search" id="set-name-search" placeholder="Then Search Here">
+                                    <div id="result-set"></div>
+                            </div>
+                            <div class="addcard">
+                                <label for="finish-select">Finish</label>
+                                    <select class="finish-select" id="finish-select" aria-placeholder="Finish">
+                                        <div id="result-finishes"></div>
+                                    </select>
+                            </div>
+                            <div class="addcard-quantity">
+                                <label for="card-quantity">Quantity</label>
+                                <input type="number" class="card-quantity" id="card-quantity" placeholder="0">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                {% if card_collection %}
+                    <table class="tableheader">
+                        <tr class="tr-column-names">
+                            <th class="td-delete-card-btn"></th>
+                            <th class="td-card-name">Card Name</th>
+                            <th class="td-set-name">Set Name</th>
+                            <th class="td-finish">Finish</>
+                            <th class="td-quantity">Quantity</th>
+                            <th class="td-individual-value">Individual Value</th>
+                            <th class="td-total-value">Total Value</th>
+                        </tr>
+                            {% set this_collection = card_collection[loop.index0] %}
+                            {% for card in this_collection %}
+                                <tr class="card-row">
+                                    <td class="row-btn">
+                                        <button type="button" class="delete-card-btn" id="{{ card['card_id'] }}" onclick="deletecardfromcollection(this.id)">X</button>
+                                    </td>
+                                    <td class="row-content">{{ card['card_name'] }}</td>
+                                    <td class="row-content">{{ card['set_name'] }}</td>
+                                    <td class="row-content">{{ card['finish'] }}</td>
+                                    <td class="row-content">{{ card['quantity']}}</td>
+                                    {% if card['finish'] == 'nonfoil'%}
+                                    <td class="row-content">${{ card['nonfoil_price']|float }}</td>
+                                    {% elif card['finish'] == 'foil'%}
+                                    <td class="row-content">${{ card['foil_price']|float }}</td>
+                                    {% elif card['finish'] == 'etched'%}
+                                    <td class="divTableCell">${{ card['etched_price']|float }}</td>
+                                    {% endif %}
+                                    {% if card['finish'] == 'nonfoil'%}
+                                    <td class="row-content" id="total_price" data-value="{{ (card['quantity'] * card['nonfoil_price']|float)|float }}">${{ (card['quantity'] * card['nonfoil_price']|float)|float }}</td>
+                                    {% elif card['finish'] == 'foil'%}
+                                    <td class="row-content" id="total_price" data-value="{{ (card['quantity'] * card['foil_price']|float)|float }}">${{ (card['quantity'] * card['foil_price']|float)|float }}</td>
+                                    {% elif card['finish'] == 'etched'%}
+                                    <td class="row-content" id="total_price" data-value="{{ (card['quantity'] * card['etched_price']|float)|float }}">${{ (card['quantity'] * card['etched_price']|float)|float }}</td>
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                    </table>
+                    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+                    <script>
+                        function collection_name_change(){
+                            let name = document.getElementById("collection_name")
+                            let collection_id = '{{ x.collection_id }}'
+                            let collectionname = name.textContent
+                            let dict_values = {collection_id, collectionname}
+                            let s = JSON.stringify(dict_values)
+                            
+                            $.ajax({
+                                url:"/updatecollectionname",
+                                type:"POST",
+                                contentType: "application/json",
+                                data: JSON.stringify(s)
+                            })
+                        }
+                        
+                        let card_list = {{ cards_list|safe }}
             
-            let card_list = {{ cards_list|safe }}
-
-            async function get_set_names(card_name){
-                let set_names = await fetch(`http://10.0.0.6:5000/collection_get_set_autocomplete_list/${card_name}`)
-                return await set_names.json()
-            }
-
-            async function get_finishes_list(card_name, set_name){
-                let finishes_list = await fetch(`http://10.0.0.6:5000/collection_get_finishes_autocomplete_list/${card_name}&${set_name}`)
-
-                return await finishes_list.json()
-            }
-
-            function addtocollection(){
-                let collection_id = '{{ x.collection_id }}'
-                let collector_id = '{{ collector_id }}'
-                let card_name = document.getElementById('card-name-search').value
-                let set_name = document.getElementById('set-name-search').value
-                let quantity = document.querySelector('.card-quantity').value
-                let finish = document.getElementById('finish-select').value
-
-                let dict_values = {collection_id, card_name, set_name, quantity, finish}
-                let s = JSON.stringify(dict_values)
-
-                $.ajax({
-                    url:"/collection_addnewcard",
-                    type:"POST",
-                    contentType: "application/json",
-                    data: JSON.stringify(s),
-                    success: location.href = `/collection/${collector_id}`
-                })
-            }
-
-            function deletecardfromcollection(card_id){
-                console.log(card_id)
-                let collection_id = '{{ x.collection_id }}'
-                let collector_id = '{{ collector_id }}'
-                let dict_values = {collection_id, card_id}
-                let s = JSON.stringify(dict_values)
-
-                $.ajax({
-                    url:"/collection_deletecard",
-                    type:"POST",
-                    contentType: "application/json",
-                    data: JSON.stringify(s),
-                    success: location.href = `/collection/${collector_id}`
-                })
-            }
-
-            let collectionValues = document.querySelectorAll('[id=total_price]')
-            let collectionValue = 0.00
-            for(let i = 0; i < collectionValues.length; i++){
-                let totalvalue = collectionValues[i].attributes[2].value
-                let floatvalue = parseFloat(totalvalue)
-                collectionValue += floatvalue
-            }
-            let totalcollectionvalue = collectionValue.toFixed(2)
-            document.getElementById('collection-value').innerHTML = "Collection Value: " + totalcollectionvalue
-
-            </script>
+                        async function get_set_names(card_name){
+                            let set_names = await fetch(`http://10.0.0.6:5000/collection_get_set_autocomplete_list/${card_name}`)
+                            return await set_names.json()
+                        }
+            
+                        async function get_finishes_list(card_name, set_name){
+                            let finishes_list = await fetch(`http://10.0.0.6:5000/collection_get_finishes_autocomplete_list/${card_name}&${set_name}`)
+            
+                            return await finishes_list.json()
+                        }
+            
+                        function addtocollection(){
+                            let collection_id = '{{ x.collection_id }}'
+                            let collector_id = '{{ collector_id }}'
+                            let card_name = document.getElementById('card-name-search').value
+                            let set_name = document.getElementById('set-name-search').value
+                            let quantity = document.querySelector('.card-quantity').value
+                            let finish = document.getElementById('finish-select').value
+            
+                            let dict_values = {collection_id, card_name, set_name, quantity, finish}
+                            let s = JSON.stringify(dict_values)
+            
+                            $.ajax({
+                                url:"/collection_addnewcard",
+                                type:"POST",
+                                contentType: "application/json",
+                                data: JSON.stringify(s),
+                                success: location.href = `/collection/${collector_id}`
+                            })
+                        }
+            
+                        function deletecardfromcollection(card_id){
+                            console.log(card_id)
+                            let collection_id = '{{ x.collection_id }}'
+                            let collector_id = '{{ collector_id }}'
+                            let dict_values = {collection_id, card_id}
+                            let s = JSON.stringify(dict_values)
+            
+                            $.ajax({
+                                url:"/collection_deletecard",
+                                type:"POST",
+                                contentType: "application/json",
+                                data: JSON.stringify(s),
+                                success: location.href = `/collection/${collector_id}`
+                            })
+                        }
+            
+                        let collectionValues = document.querySelectorAll('[id=total_price]')
+                        let collectionValue = 0.00
+                        for(let i = 0; i < collectionValues.length; i++){
+                            let totalvalue = collectionValues[i].attributes[2].value
+                            let floatvalue = parseFloat(totalvalue)
+                            collectionValue += floatvalue
+                        }
+                        let totalcollectionvalue = collectionValue.toFixed(2)
+                        document.getElementById('collection-value').innerHTML = "Collection Value: " + totalcollectionvalue
+            
+                        </script>
+            </div>
+            {% endfor %}
+            <script src="{{ url_for('static', filename="js/collection.js") }}"></script>
+        </article>
     </div>
-{% endfor %}
-<script src="{{ url_for('static', filename="js/collection.js") }}"></script>
-{% endblock %}
+</div>
+    {% endblock %}

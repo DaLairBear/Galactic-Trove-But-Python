@@ -42,6 +42,7 @@
                         </form>
                     </div>
                 </div>
+                {% if card_inventory %}
                     <table class="tableheader">
                         <tr class="tr-column-names">
                             <th class="td-delete-card-btn"></th>
@@ -52,32 +53,33 @@
                             <th class="td-individual-value">Individual Value</th>
                             <th class="td-total-value">Total Value</th>
                         </tr>
-                        {% set this_inventory = card_inventory[loop.index0] %}
-                        {% for card in this_inventory %}
-                        <tr class="card-row">
-                            <td class="row-btn">
-                                <button type="button" class="delete-card-btn" id="{{ card['card_id'] }}" onclick="deletecardfrominventory(this.id)">X</button>
-                            </td>
-                            <td class="row-content">{{ card['card_name'] }}</td>
-                            <td class="row-content">{{ card['set_name'] }}</td>
-                            <td class="row-content">{{ card['finish'] }}</td>
-                            <td class="row-content">{{ card['quantity']}}</td>
-                            {% if card['finish'] == 'nonfoil'%}
-                            <td class="row-content">${{ card['nonfoil_price']|float }}</td>
-                            {% elif card['finish'] == 'foil'%}
-                            <td class="row-content">${{ card['foil_price']|float }}</td>
-                            {% elif card['finish'] == 'etched'%}
-                            <td class="divTableCell">${{ card['etched_price']|float }}</td>
-                            {% endif %}
-                            {% if card['finish'] == 'nonfoil'%}
-                            <td class="row-content" id="total_price" data-value="{{ (card['quantity'] * card['nonfoil_price']|float)|float }}">${{ (card['quantity'] * card['nonfoil_price']|float)|float }}</td>
-                            {% elif card['finish'] == 'foil'%}
-                            <td class="row-content" id="total_price" data-value="{{ (card['quantity'] * card['foil_price']|float)|float }}">${{ (card['quantity'] * card['foil_price']|float)|float }}</td>
-                            {% elif card['finish'] == 'etched'%}
-                            <td class="row-content" id="total_price" data-value="{{ (card['quantity'] * card['etched_price']|float)|float }}">${{ (card['quantity'] * card['etched_price']|float)|float }}</td>
-                            {% endif %}
-                        </tr>
-                        {% endfor %}
+                            {% set this_inventory = card_inventory[loop.index0] %}
+                            {% for card in this_inventory %}
+                            <tr class="card-row">
+                                <td class="row-btn">
+                                    <button type="button" class="delete-card-btn" id="{{ card['card_id'] }}" onclick="deletecardfrominventory(this.id)">X</button>
+                                </td>
+                                <td class="row-content">{{ card['card_name'] }}</td>
+                                <td class="row-content">{{ card['set_name'] }}</td>
+                                <td class="row-content">{{ card['finish'] }}</td>
+                                <td class="row-content">{{ card['quantity']}}</td>
+                                {% if card['finish'] == 'nonfoil'%}
+                                <td class="row-content">${{ card['nonfoil_price']|float }}</td>
+                                {% elif card['finish'] == 'foil'%}
+                                <td class="row-content">${{ card['foil_price']|float }}</td>
+                                {% elif card['finish'] == 'etched'%}
+                                <td class="divTableCell">${{ card['etched_price']|float }}</td>
+                                {% endif %}
+                                {% if card['finish'] == 'nonfoil'%}
+                                <td class="row-content" id="total_price" data-value="{{ (card['quantity'] * card['nonfoil_price']|float)|float }}">${{ (card['quantity'] * card['nonfoil_price']|float)|float }}</td>
+                                {% elif card['finish'] == 'foil'%}
+                                <td class="row-content" id="total_price" data-value="{{ (card['quantity'] * card['foil_price']|float)|float }}">${{ (card['quantity'] * card['foil_price']|float)|float }}</td>
+                                {% elif card['finish'] == 'etched'%}
+                                <td class="row-content" id="total_price" data-value="{{ (card['quantity'] * card['etched_price']|float)|float }}">${{ (card['quantity'] * card['etched_price']|float)|float }}</td>
+                                {% endif %}
+                            </tr>
+                            {% endfor %}
+                        {% endif %}
                     </table>
                 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
                 <script>
